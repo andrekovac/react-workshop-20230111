@@ -1,7 +1,11 @@
-export const AppHeader = () => {
+interface AppHeaderProps {
+  title: string;
+}
+
+export const AppHeader = ({ title }: AppHeaderProps) => {
   return (
     <header>
-      <h1>Bookmonkey</h1>
+      <h1>{title}</h1>
     </header>
   );
 };
