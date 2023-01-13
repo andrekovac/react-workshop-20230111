@@ -6,10 +6,11 @@ import { BookListItem } from "./components/BookListItem";
 
 import { exampleBooks } from "./domain/book/exampleBooks";
 import { Book } from "./domain/book";
+import { BookList } from "./components/BookList";
 
-const bookMapping = (book: Book) => {
-  return <BookListItem key={book.isbn} book={book} />;
-};
+// const bookMapping = (book: Book) => {
+//   return <BookListItem key={book.isbn} book={book} />;
+// };
 
 const App = () => {
   return (
@@ -17,13 +18,8 @@ const App = () => {
       <AppHeader title="My Book Shop" />
       <MyOldFashionedComponent />
       <p>{myString}</p>
-      {exampleBooks.map(bookMapping)}
-      {/* {[
-        <BookListItem book={exampleBooks[0]} />,
-        <BookListItem book={exampleBooks[1]} />,
-        <BookListItem book={exampleBooks[2]} />,
-        <BookListItem book={exampleBooks[3]} />,
-      ]} */}
+      {/* {exampleBooks.map(bookMapping)} */}
+      <BookList books={exampleBooks} />
     </div>
   );
 };
