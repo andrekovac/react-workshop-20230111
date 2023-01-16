@@ -3,10 +3,9 @@ import "./App.css";
 import { MyOldFashionedComponent } from "./components/OldFashionedComponent";
 import { AppHeader, myString } from "./components/AppHeader";
 
-import { Book } from "./domain/book";
 import { BookList } from "./components/BookList";
-import { useEffect, useState } from "react";
-import { fetchBooks } from "./domain/book/api";
+import { useState } from "react";
+import { useBooks } from "./domain/book/hooks";
 
 // const bookMapping = (book: Book) => {
 //   return <BookListItem key={book.isbn} book={book} />;
@@ -27,36 +26,6 @@ const Counter = () => {
   );
 };
 
-const useBooks = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    // Possibility 1: local async function that gets immediately called
-    async function fetchData() {
-      try {
-        const books = await fetchBooks();
-        if (books) {
-          setBooks(books);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-
-    // // Possibility 2: respond to promise resolution with .then handler
-    // fetchBooks()
-    //   .then((books) => {
-    //     if (books) {
-    //       setBooks(books);
-    //     }
-    //   })
-    //   .catch((error) => console.log(error));
-  }, []);
-
-  return books;
-};
-
 const useCount = (): [boolean, () => void] => {
   const [showCounter, setShowCounter] = useState(true);
 
@@ -68,7 +37,7 @@ const useCount = (): [boolean, () => void] => {
 };
 
 const App = () => {
-  const books = useBooks();
+  const { books } = useBooks();
   const [showCounter, increment] = useCount();
 
   return (
