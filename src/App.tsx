@@ -3,11 +3,10 @@ import "./App.css";
 import { MyOldFashionedComponent } from "./components/OldFashionedComponent";
 import { AppHeader, myString } from "./components/AppHeader";
 
-import { BookList } from "./components/BookList";
 import { useState } from "react";
-import { useBooks } from "./domain/book/hooks";
 import { Theme, ThemeContext } from "./domain/theme";
 import { ThemeEditor } from "./components/ThemeEditor";
+import { Outlet } from "react-router-dom";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -35,7 +34,6 @@ const useCount = (): [boolean, () => void] => {
 };
 
 const App = () => {
-  const { books } = useBooks();
   const [showCounter, increment] = useCount();
 
   const [primaryColor, setPrimaryColor] = useState("tomato");
@@ -55,7 +53,7 @@ const App = () => {
         <AppHeader title="My Book Shop" />
         <MyOldFashionedComponent />
         <p>{myString}</p>
-        <BookList books={books} />
+        <Outlet />
       </div>
     </ThemeContext.Provider>
   );
