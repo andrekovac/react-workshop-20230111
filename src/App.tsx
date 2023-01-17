@@ -7,21 +7,7 @@ import { useState } from "react";
 import { Theme, ThemeContext } from "./domain/theme";
 import { ThemeEditor } from "./components/ThemeEditor";
 import { Outlet } from "react-router-dom";
-
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <>
-      <button onClick={handleClick}>Increment</button>
-      <div>{count}</div>
-    </>
-  );
-};
+import { Counter } from "./components/Counter";
 
 const useCount = (): [boolean, () => void] => {
   const [showCounter, setShowCounter] = useState(true);
