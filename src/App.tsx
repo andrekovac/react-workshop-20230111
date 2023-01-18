@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { Theme, ThemeContext } from "./domain/theme";
 import { ThemeEditor } from "./components/ThemeEditor";
 import { Outlet } from "react-router-dom";
-import { Counter } from "./components/Counter";
+import { CounterWithUseReducer } from "./components/Counter/CounterWithUseReducer";
 
 const useCount = (): [boolean, () => void] => {
   const [showCounter, setShowCounter] = useState(true);
@@ -73,7 +73,7 @@ const App = () => {
           <UncontrolledForm />
         </div>
 
-        {showCounter && <Counter />}
+        {showCounter && <CounterWithUseReducer />}
         <AppHeader title="My Book Shop" />
         <MyOldFashionedComponent />
         <p>{myString}</p>
